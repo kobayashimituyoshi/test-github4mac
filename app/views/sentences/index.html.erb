@@ -1,0 +1,43 @@
+<html>
+<body>
+
+掲示板
+
+<% if @topics.present? %>
+<table>
+
+<tr>
+  <th>番号</th>
+  <th>スレッドタイトル</th>
+  <th>設置日時</td>
+</tr>
+
+<% @topics.each do |t| %>
+
+<tr>
+  <td><%= t.id %></td>
+  <td>
+     
+      <%= link_to t.title, :controller=>"sentences", :action=>"thread", :id=>t.id %> 
+      
+  </td>
+  <td><%= t.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td> 
+</tr>
+<% end %>
+</table>
+<% else %>
+<p>スレッドがありません。</p>
+<% end %> 
+<%= form_tag action="sentences/create_topic" do %>
+<br>
+<br>
+新規スレッドタイトル<br>
+<%= text_field("written_data","topic_name") %><br>
+<%= render "textbox" %>
+
+<%= button_to ("スレッドを立てる") %>
+<% end %>
+
+</body>
+</html>
+

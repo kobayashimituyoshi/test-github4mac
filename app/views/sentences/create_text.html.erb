@@ -1,0 +1,11 @@
+
+<%= link_to "スレッドに戻る", :controller=>"sentences", :action=>"thread", :id=>@id %>
+<br>
+<%= link_to "スレッド一覧に戻る",:controller=>"sentences",:action=>"index" %>
+<br>
+<br>
+書き込みました。
+<br>
+<%= @text["name"] %>
+<br>
+<%=simple_format( @text["body"]) %>

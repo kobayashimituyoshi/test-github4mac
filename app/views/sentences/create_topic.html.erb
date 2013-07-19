@@ -1,0 +1,10 @@
+スレッドを立てました。
+<p><%= link_to "スレッド一覧に戻る",:root %></p>
+<p><%= link_to "スレッドに入る",:controller=>"sentences",:action=>"thread",:id=>@id %>
+<br>
+<br>
+<%= @topic["title"] %>
+<br>
+<%= @text["name"] %>
+<br>
+<%= simple_format(@text["body"]) %>

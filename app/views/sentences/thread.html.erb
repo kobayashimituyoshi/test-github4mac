@@ -1,0 +1,42 @@
+<html>
+
+<body>
+
+<%= link_to "スレッド一覧に戻る", :action=> :index %>
+<br>
+<br>
+
+<%= @thread_title[:title] %>
+
+<% if  @sentences.present? %>
+
+<table>
+<% @sentences.each_with_index do |s,count| %>
+<tr>
+ <td><%= count+1  %>:</td>
+ <td><%= s.name %></td>
+ <td> <%= s.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+  <td> ID:<%= s.cook %> </td>
+</tr>
+<tr>
+<td colspan=4><%=simple_format( s.body) %></td>
+</tr>
+<tr><td colspan=3><p></p></td></tr>
+<% end %>
+</table>
+<% else %>
+書き込みがありません
+<% end %>
+<br>
+<br>
+<br>
+	<%= form_tag :controller=>"sentences", :action=>"create_text", :id=>@id  do %>
+<%= render "textbox" %>
+
+
+<%= button_to("書き込む") %>
+
+<% end %>
+
+</body>
+</html>
